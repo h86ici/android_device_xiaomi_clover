@@ -23,9 +23,9 @@
 
 # inherit MI PAD 4 HAVOC-OS device config
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/nitrogen_clover.mk
+    $(LOCAL_DIR)/aosp_clover.mk
 
 COMMON_LUNCH_CHOICES := \
-		nitrogen_clover-eng \
-		nitrogen_clover-userdebug \
-		nitrogen_clover-user
+		aosp_clover-eng \
+		aosp_clover-userdebug \
+		aosp_clover-user
