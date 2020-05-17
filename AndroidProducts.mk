@@ -23,9 +23,9 @@
 
 # inherit MI PAD 4 HAVOC-OS device config
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aicp_clover.mk
+    $(LOCAL_DIR)/havoc_clover.mk
 
 COMMON_LUNCH_CHOICES := \
-		aicp_clover-eng \
-		aicp_clover-userdebug \
-		aicp_clover-user
+	havoc_clover-userdebug \
+	havoc_clover-eng \
+    havoc_clover-user

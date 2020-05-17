@@ -21,33 +21,47 @@
 # definition file).
 #
 
+#add gapps directly
+GAPPS_BUILD := false
+
+# Build with GApps if GAPPS_BUILD is true
+ ifeq ($(GAPPS_BUILD),true)
+     WITH_GAPPS := true
+     TARGET_GAPPS_ARCH := arm64
+#     IS_PHONE := true
+#     TARGET_SHIPS_SEPERATE_GAPPS_BUILD := true
+ else
+     WITH_GAPPS := false
+ endif
+
 # Inherit device configuration
 $(call inherit-product, device/xiaomi/clover/device.mk)
 
-# Inherit some common Lineage stuff.
-# $(call inherit-product, vendor/aicp/config/common_full_phone.mk)
-$(call inherit-product, vendor/aicp/config/common_full_phone.mk)
-
-# Define first api level
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
+# Inherit from Havoc custom product configuration
+$(call inherit-product, vendor/havoc/config/common_full_phone.mk)
 
 DEVICE_PATH := device/xiaomi/clover
 
-# CarbonRom Maintainer
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.aicp.maintainer="ici"
+	ro.havoc.maintainer=ici
 
 # Device identifier
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_PLATFORM := SDM660
-PRODUCT_NAME := aicp_clover
+PRODUCT_NAME := havoc_clover
 PRODUCT_CHARACTERISTICS := tablet
 PRODUCT_DEVICE := clover
 PRODUCT_MODEL := MI PAD 4
 
-# Build Fingerprint
+# CarbonRom Maintainer
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.havoc.maintainer="ici"
+
 PRODUCT_BUILD_PROP_OVERRIDES += \
-	PRIVATE_BUILD_DESC="clover-user 8.1.0 OPM1.171019.019 9.7.4 release-keys"
+	PRODUCT_NAME=clover \
+	PRIVATE_BUILD_DESC="clover-user 9 PKQ1.180904.001 V10.3.4.0.PDCCNXM release-keys"
+
+BUILD_FINGERPRINT="xiaomi/clover/clover:9/PKQ1.180904.001/V10.3.4.0.PDCCNXM:user/release-keys"
 
 TARGET_VENDOR_PRODUCT_NAME := clover
